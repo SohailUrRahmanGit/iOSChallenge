@@ -14,6 +14,7 @@
 		C54E41FF2356FCDB0033148B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C54E41FE2356FCDB0033148B /* Assets.xcassets */; };
 		C54E42022356FCDB0033148B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54E42002356FCDB0033148B /* LaunchScreen.storyboard */; };
 		C54E420D2356FCDB0033148B /* AboutPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54E420C2356FCDB0033148B /* AboutPlacesTests.swift */; };
+		C5D3F9BD235779DF004E6C47 /* FactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D3F9BC235779DF004E6C47 /* FactsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		C54E42082356FCDB0033148B /* AboutPlacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AboutPlacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54E420C2356FCDB0033148B /* AboutPlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPlacesTests.swift; sourceTree = "<group>"; };
 		C54E420E2356FCDB0033148B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5D3F9BC235779DF004E6C47 /* FactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableViewCell.swift; sourceTree = "<group>"; };
 		D7D1282A685A146B8FA07D5B /* Pods-AboutPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AboutPlaces.release.xcconfig"; path = "Target Support Files/Pods-AboutPlaces/Pods-AboutPlaces.release.xcconfig"; sourceTree = "<group>"; };
 		DD65D9C4A40702BFEABC6E94 /* libPods-AboutPlaces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AboutPlaces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -67,7 +69,6 @@
 				A76A2F862931FDFE8224C7BE /* Pods-AboutPlaces.debug.xcconfig */,
 				D7D1282A685A146B8FA07D5B /* Pods-AboutPlaces.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -108,6 +109,7 @@
 				C54E41FE2356FCDB0033148B /* Assets.xcassets */,
 				C54E42002356FCDB0033148B /* LaunchScreen.storyboard */,
 				C54E42032356FCDB0033148B /* Info.plist */,
+				C5D3F9BC235779DF004E6C47 /* FactsTableViewCell.swift */,
 			);
 			path = AboutPlaces;
 			sourceTree = "<group>";
@@ -250,6 +252,7 @@
 				C54E41FA2356FCD80033148B /* AboutPlacesViewController.swift in Sources */,
 				C54E41F62356FCD80033148B /* AppDelegate.swift in Sources */,
 				C54E41F82356FCD80033148B /* SceneDelegate.swift in Sources */,
+				C5D3F9BD235779DF004E6C47 /* FactsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
