@@ -1,0 +1,6 @@
+module Pods_AboutPlaces {
+  umbrella header "Pods-AboutPlaces-umbrella.h"
+
+  export *
+  module * { export * }
+}

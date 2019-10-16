@@ -1,0 +1,4 @@
+target 'AboutPlaces' do
+pod 'SDWebImage'
+
+end
