@@ -15,6 +15,7 @@
 		C54E42022356FCDB0033148B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54E42002356FCDB0033148B /* LaunchScreen.storyboard */; };
 		C54E420D2356FCDB0033148B /* AboutPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54E420C2356FCDB0033148B /* AboutPlacesTests.swift */; };
 		C5D3F9BD235779DF004E6C47 /* FactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D3F9BC235779DF004E6C47 /* FactsTableViewCell.swift */; };
+		C5D3F9BF23578838004E6C47 /* FactsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D3F9BE23578838004E6C47 /* FactsResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		C54E420C2356FCDB0033148B /* AboutPlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPlacesTests.swift; sourceTree = "<group>"; };
 		C54E420E2356FCDB0033148B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5D3F9BC235779DF004E6C47 /* FactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableViewCell.swift; sourceTree = "<group>"; };
+		C5D3F9BE23578838004E6C47 /* FactsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsResponseModel.swift; sourceTree = "<group>"; };
 		D7D1282A685A146B8FA07D5B /* Pods-AboutPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AboutPlaces.release.xcconfig"; path = "Target Support Files/Pods-AboutPlaces/Pods-AboutPlaces.release.xcconfig"; sourceTree = "<group>"; };
 		DD65D9C4A40702BFEABC6E94 /* libPods-AboutPlaces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AboutPlaces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 				C54E42002356FCDB0033148B /* LaunchScreen.storyboard */,
 				C54E42032356FCDB0033148B /* Info.plist */,
 				C5D3F9BC235779DF004E6C47 /* FactsTableViewCell.swift */,
+				C5D3F9BE23578838004E6C47 /* FactsResponseModel.swift */,
 			);
 			path = AboutPlaces;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5D3F9BF23578838004E6C47 /* FactsResponseModel.swift in Sources */,
 				C54E41FA2356FCD80033148B /* AboutPlacesViewController.swift in Sources */,
 				C54E41F62356FCD80033148B /* AppDelegate.swift in Sources */,
 				C54E41F82356FCD80033148B /* SceneDelegate.swift in Sources */,

@@ -21,7 +21,6 @@ class AboutPlacesViewController: UIViewController {
         aboutPlacesTableView.dataSource = self
         aboutPlacesTableView.register(FactsTableViewCell.self, forCellReuseIdentifier: "FactsCell")
         navigationItem.title = "About Canada"
-
         // Do any additional setup after loading the view.
     }
 
@@ -33,7 +32,6 @@ class AboutPlacesViewController: UIViewController {
     aboutPlacesTableView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
     aboutPlacesTableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
  }
-    
     
 }
 
