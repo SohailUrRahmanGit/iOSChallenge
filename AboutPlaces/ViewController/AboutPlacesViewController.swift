@@ -12,6 +12,7 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
    
     let aboutPlacesTableView = UITableView()
     let network = NetworkService()
+    var factsObject : [Facts]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,16 +38,19 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
  
 func didCompleteRequest(result: AnyObject)
 {
-  print(result)
+    print(result)
+    factsObject = result as? [Facts]
+         DispatchQueue.main.async {
+//             self.aboutPlacesTableView.reloadData()
+         }
 }
     
 }
 
 extension AboutPlacesViewController:UITableViewDelegate,UITableViewDataSource
 {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return factsObject?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
