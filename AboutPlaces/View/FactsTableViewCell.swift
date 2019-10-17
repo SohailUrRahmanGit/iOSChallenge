@@ -33,6 +33,8 @@ class FactsTableViewCell: UITableViewCell {
     let factsDescriptionLabel : UILabel = {
     let lbl = UILabel()
     lbl.textColor = .black
+        lbl.text = "Space Program is good"
+
     lbl.font = UIFont.systemFont(ofSize: 16)
     lbl.textAlignment = .left
     lbl.numberOfLines = 0
@@ -46,46 +48,124 @@ class FactsTableViewCell: UITableViewCell {
         addSubview(factTitleLabel)
         addSubview(factsImageView)
         addSubview(factsDescriptionLabel)
+        
         addContraintsToElementFactImageView()
         addContraintsToElementFactTitleLabel()
+        addContraintsToElementFactDescriptionLabel()
     }
     
     func addContraintsToElementFactImageView()
     {
-        factsImageView.translatesAutoresizingMaskIntoConstraints = false
-        factsImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        // width constraint
-        factsImageView.widthAnchor.constraint(equalToConstant: CGFloat(100)).isActive = true
-        factsImageView.heightAnchor.constraint(equalToConstant: CGFloat(100)).isActive = true
-        //Bottom anchor for height
-         factsImageView.bottomAnchor.constraint(equalTo:self.safeAreaLayoutGuide.bottomAnchor).isActive = true
+       factsImageView.translatesAutoresizingMaskIntoConstraints = false
+
+        let leadConstraints =  NSLayoutConstraint(item: factsImageView,
+                    attribute: .leading,
+                    relatedBy: .equal,
+                    toItem: self,
+                    attribute: .leading,
+                    multiplier: 1,
+                    constant: 15)
+        
+        let height =  NSLayoutConstraint(item: factsImageView,
+              attribute: .height,
+              relatedBy: .equal,
+              toItem: nil,
+              attribute: .height,
+              multiplier: 1,
+              constant: 85)
+
+        let width =  NSLayoutConstraint(item: factsImageView,
+                    attribute: .width,
+                    relatedBy: .equal,
+                    toItem: nil,
+                    attribute: .notAnAttribute,
+                    multiplier: 1,
+                    constant: 85)
+
+ 
+
+        let horizontal =  NSLayoutConstraint(item: factsImageView,
+                    attribute: .centerY,
+                    relatedBy: .equal,
+                    toItem: self,
+                    attribute: .centerY,
+                    multiplier: 1,
+                    constant: 0)
+   
+
+         self.addConstraints([leadConstraints])
+         self.addConstraints([height])
+         self.addConstraints([width])
+         self.addConstraints([horizontal])
+        
     }
     
     func addContraintsToElementFactTitleLabel()
     {
         factTitleLabel.translatesAutoresizingMaskIntoConstraints = false
        
-        let trailingConstraints =  NSLayoutConstraint(item: factTitleLabel,
-        attribute: .leadingMargin,
-        relatedBy: .equal,
-        toItem: factsImageView,
-        attribute: .trailingMargin,
-        multiplier: 1,
-        constant: 30)
+        let topConstraints =  NSLayoutConstraint(item: factTitleLabel,
+              attribute: .left,
+              relatedBy: .equal,
+              toItem: factsImageView,
+              attribute: .right,
+              multiplier: 1,
+              constant: 10)
         
-        let topConstraints = NSLayoutConstraint(item: factTitleLabel,
+        let leadConstraints =  NSLayoutConstraint(item: factTitleLabel,
+              attribute: .top,
+              relatedBy: .equal,
+              toItem: self,
+              attribute: .top,
+              multiplier: 1,
+              constant: 0)
+        
+        let height =  NSLayoutConstraint(item: factTitleLabel,
+              attribute: .height,
+              relatedBy: .equal,
+              toItem: nil,
+              attribute: .notAnAttribute,
+              multiplier: 1,
+              constant: 30)
+
+        let width =  NSLayoutConstraint(item: factTitleLabel,
+                    attribute: .width,
+                    relatedBy: .equal,
+                    toItem: nil,
+                    attribute: .notAnAttribute,
+                    multiplier: 1,
+                    constant: 250)
+
+        
+        self.addConstraints([topConstraints])
+        self.addConstraints([leadConstraints])
+        self.addConstraints([height])
+        self.addConstraints([width])
+
+    }
+    
+    func addContraintsToElementFactDescriptionLabel()
+    {
+    
+        factsDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let top = NSLayoutConstraint(item: factsDescriptionLabel,
         attribute: .top,
         relatedBy: .equal,
-        toItem: factsImageView,
-        attribute: .top,
+        toItem: factTitleLabel,
+        attribute: .bottom,
         multiplier: 1,
         constant: 10)
-        factsImageView.widthAnchor.constraint(equalToConstant: CGFloat(100)).isActive = true
-        factsImageView.heightAnchor.constraint(equalToConstant: CGFloat(100)).isActive = true
         
-        self.addConstraints([trailingConstraints])
-        self.addConstraints([topConstraints])
-        
+          let lead = NSLayoutConstraint(item: factsDescriptionLabel, attribute: .left, relatedBy: .equal, toItem: factsImageView, attribute: .right, multiplier: 1, constant: 10)
+
+          let width = NSLayoutConstraint(item: factsDescriptionLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200)
+
+       factsDescriptionLabel.bottomAnchor.constraint(equalTo:self.safeAreaLayoutGuide.bottomAnchor).isActive = true
+
+        self.addConstraints([top])
+        self.addConstraints([lead])
+        self.addConstraints([width])
     }
     
     
