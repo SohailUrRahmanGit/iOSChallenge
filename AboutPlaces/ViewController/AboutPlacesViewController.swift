@@ -14,19 +14,42 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
     let aboutPlacesTableView = UITableView()
     let network = NetworkService()
     var factsObject : Facts?
+    let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView();
+
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+      refreshControl.addTarget(self, action:
+        #selector(self.handleRefresh(_:)),
+                               for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         view.addSubview(aboutPlacesTableView)
+        self.aboutPlacesTableView.addSubview(self.refreshControl)
         setupTableViewContraints()
         aboutPlacesTableView.dataSource = self
         aboutPlacesTableView.register(FactsTableViewCell.self, forCellReuseIdentifier: FACT_CELL_ID)
         network.delegate = self
-        network.getFactsApiCall(urlString: FACTS_URL)
-        // Do any additional setup after loading the view.
+        callFactsService()
     }
 
+    func callFactsService()
+    {
+        network.getFactsApiCall(urlString: FACTS_URL)
+        startLoading()
+    }
+    
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+     callFactsService()
+     refreshControl.endRefreshing()
+    }
+    
  func setupTableViewContraints()
  {
     aboutPlacesTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,11 +58,26 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
     aboutPlacesTableView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
     aboutPlacesTableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
  }
- 
+    
+ func startLoading(){
+     activityIndicator.center = self.view.center;
+     activityIndicator.hidesWhenStopped = true;
+     activityIndicator.style = UIActivityIndicatorView.Style.medium
+     view.addSubview(activityIndicator);
+
+     activityIndicator.startAnimating();
+
+ }
+
+ func stopLoading(){
+     activityIndicator.stopAnimating();
+ }
 func didCompleteRequest(result: AnyObject)
 {
         factsObject = result as? Facts
          DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.stopLoading()
              self.navigationItem.title = self.factsObject!.title
              self.aboutPlacesTableView.reloadData()
          }
