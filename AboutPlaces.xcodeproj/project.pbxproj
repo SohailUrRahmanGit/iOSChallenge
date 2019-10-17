@@ -109,15 +109,15 @@
 		C54E41F42356FCD80033148B /* AboutPlaces */ = {
 			isa = PBXGroup;
 			children = (
+				C5D3F9C723584C05004E6C47 /* ViewController */,
+				C5D3F9C623584BD4004E6C47 /* Model */,
 				C5D3F9C2235820A1004E6C47 /* NetworkManager */,
 				C54E41F52356FCD80033148B /* AppDelegate.swift */,
 				C54E41F72356FCD80033148B /* SceneDelegate.swift */,
-				C54E41F92356FCD80033148B /* AboutPlacesViewController.swift */,
 				C54E41FE2356FCDB0033148B /* Assets.xcassets */,
 				C54E42002356FCDB0033148B /* LaunchScreen.storyboard */,
 				C54E42032356FCDB0033148B /* Info.plist */,
 				C5D3F9BC235779DF004E6C47 /* FactsTableViewCell.swift */,
-				C5D3F9BE23578838004E6C47 /* FactsResponseModel.swift */,
 				C5D3F9C323582497004E6C47 /* Utils */,
 			);
 			path = AboutPlaces;
@@ -146,6 +146,22 @@
 				C5D3F9C4235824BE004E6C47 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C5D3F9C623584BD4004E6C47 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C5D3F9BE23578838004E6C47 /* FactsResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C5D3F9C723584C05004E6C47 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C54E41F92356FCD80033148B /* AboutPlacesViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

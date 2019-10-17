@@ -47,7 +47,9 @@ class NetworkService: NSObject {
             do {
                 // Decode data to object
                 print(responseData as NSData)
-                let object = try decoder.decode([Facts].self, from: responseData)
+                let utf8Data = String(decoding: responseData, as: UTF8.self).data(using: .utf8)
+
+                let object = try decoder.decode(Facts.self, from: utf8Data!)
                 print(object)
                 self.delegate?.didCompleteRequest(result: object as AnyObject)
             }
@@ -58,4 +60,3 @@ class NetworkService: NSObject {
         task.resume()
     }
 }
-
