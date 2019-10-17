@@ -20,7 +20,7 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
         view.addSubview(aboutPlacesTableView)
         setupTableViewContraints()
         aboutPlacesTableView.dataSource = self
-        aboutPlacesTableView.register(FactsTableViewCell.self, forCellReuseIdentifier: "FactsCell")
+        aboutPlacesTableView.register(FactsTableViewCell.self, forCellReuseIdentifier: FACT_CELL_ID)
         navigationItem.title = "About Canada"
         network.delegate = self
         network.getFactsApiCall(urlString: FACTS_URL)
@@ -38,8 +38,8 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
  
 func didCompleteRequest(result: AnyObject)
 {
-    print(result)
     factsObject = result as? [Facts]
+    
          DispatchQueue.main.async {
 //             self.aboutPlacesTableView.reloadData()
          }
@@ -50,11 +50,12 @@ func didCompleteRequest(result: AnyObject)
 extension AboutPlacesViewController:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return factsObject?.count ?? 0
+  // return factsObject?.count ?? 0
+    return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FactsCell", for: indexPath) as! FactsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FACT_CELL_ID , for: indexPath) as! FactsTableViewCell
         return cell
     }
     
