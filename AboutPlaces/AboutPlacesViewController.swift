@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AboutPlacesViewController.swift
 //  AboutPlaces
 //
 //  Created by sohail ur rahman on 16/10/19.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class AboutPlacesViewController: UIViewController {
-
-
+class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
+   
     let aboutPlacesTableView = UITableView()
- 
+    let network = NetworkService()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -21,6 +21,8 @@ class AboutPlacesViewController: UIViewController {
         aboutPlacesTableView.dataSource = self
         aboutPlacesTableView.register(FactsTableViewCell.self, forCellReuseIdentifier: "FactsCell")
         navigationItem.title = "About Canada"
+        network.delegate = self
+        network.getFactsApiCall(urlString: FACTS_URL)
         // Do any additional setup after loading the view.
     }
 
@@ -32,6 +34,11 @@ class AboutPlacesViewController: UIViewController {
     aboutPlacesTableView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
     aboutPlacesTableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
  }
+ 
+func didCompleteRequest(result: AnyObject)
+{
+  print(result)
+}
     
 }
 

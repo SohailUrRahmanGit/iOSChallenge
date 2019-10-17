@@ -8,22 +8,31 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Facts: Codable {
-    let title: String
-    let rows: [Row]
-}
-
-struct Row: Codable {
-    let title, rowDescription: String?
-    let imageHref: String?
+struct Facts : Codable {
+    let title : String?
+    let rows : [Rows]?
 
     enum CodingKeys: String, CodingKey {
-        case title
-        case rowDescription = "description"
-        case imageHref
+
+        case title = "title"
+        case rows = "rows"
     }
+
+
 }
 
+struct Rows : Codable {
+    let title : String?
+    let description : String?
+    let imageHref : String?
 
-//let Facts = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
+    enum CodingKeys: String, CodingKey {
+
+        case title = "title"
+        case description = "description"
+        case imageHref = "imageHref"
+    }
+
+}
+
+//let Facts = try? newJSONDecoder().decode(Facts.self, from: jsonData)
