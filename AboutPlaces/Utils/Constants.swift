@@ -10,3 +10,5 @@ import Foundation
 
 let FACTS_URL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
 let FACT_CELL_ID = "FactsCell"
+let TITLE_NOT_AVAILABLE = "Title not available"
+let DESCRIPTION_NOT_AVAILABLE = "Description not available"

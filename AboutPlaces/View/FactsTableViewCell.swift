@@ -58,6 +58,9 @@ class FactsTableViewCell: UITableViewCell {
     {
        factsImageView.translatesAutoresizingMaskIntoConstraints = false
 
+
+        
+        
         let leadConstraints =  NSLayoutConstraint(item: factsImageView,
                     attribute: .leading,
                     relatedBy: .equal,
@@ -72,7 +75,7 @@ class FactsTableViewCell: UITableViewCell {
               toItem: nil,
               attribute: .height,
               multiplier: 1,
-              constant: 120)
+              constant: 50)
 
         let width =  NSLayoutConstraint(item: factsImageView,
                     attribute: .width,
@@ -80,7 +83,7 @@ class FactsTableViewCell: UITableViewCell {
                     toItem: nil,
                     attribute: .notAnAttribute,
                     multiplier: 1,
-                    constant: 120)
+                    constant: 100)
 
  
 

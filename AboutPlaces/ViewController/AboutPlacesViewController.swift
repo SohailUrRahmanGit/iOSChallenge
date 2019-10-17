@@ -22,7 +22,6 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
         setupTableViewContraints()
         aboutPlacesTableView.dataSource = self
         aboutPlacesTableView.register(FactsTableViewCell.self, forCellReuseIdentifier: FACT_CELL_ID)
-        navigationItem.title = "About Canada"
         network.delegate = self
         network.getFactsApiCall(urlString: FACTS_URL)
         // Do any additional setup after loading the view.
@@ -39,12 +38,9 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
  
 func didCompleteRequest(result: AnyObject)
 {
-    factsObject = result as? Facts
-    if let count = factsObject!.rows?.count{
-     print("the count is ")
-     print(count)
-    }
+        factsObject = result as? Facts
          DispatchQueue.main.async {
+             self.navigationItem.title = self.factsObject!.title
              self.aboutPlacesTableView.reloadData()
          }
 }
@@ -57,19 +53,32 @@ extension AboutPlacesViewController:UITableViewDelegate,UITableViewDataSource
         return factsObject?.rows?.count ?? 0
     }
  
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let heightValue = 0.0
-//        let cell = tableView.dequeueReusableCell(withIdentifier: FACT_CELL_ID , for: indexPath) as! FactsTableViewCell
-//        let text = cell.factsDescriptionLabel.text
-//        heightValue = text.size
-//    }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FACT_CELL_ID , for: indexPath) as! FactsTableViewCell
-        cell.factTitleLabel.text = factsObject?.rows![indexPath.row].title
-        cell.factsDescriptionLabel.text = factsObject?.rows![indexPath.row].description
      
-        //  cell.factsImageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "artificial-intelligence-1"))
+        if let title = factsObject?.rows![indexPath.row].title {
+            cell.factTitleLabel.text = title
+        }else {
+            cell.factTitleLabel.text = TITLE_NOT_AVAILABLE
+
+        }
+        
+        
+        if let description = factsObject?.rows![indexPath.row].description {
+            cell.factsDescriptionLabel.text = description
+        }else {
+            cell.factsDescriptionLabel.text = DESCRIPTION_NOT_AVAILABLE
+
+        }
+        
+        if let imageURLString = factsObject?.rows![indexPath.row].imageHref {
+            cell.factsImageView.sd_setImage(with: URL(string: imageURLString), placeholderImage: UIImage(named: "artificial-intelligence-1"))
+        }else {
+            
+        }
+
         return cell
     }
     
