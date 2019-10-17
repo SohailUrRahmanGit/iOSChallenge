@@ -10,8 +10,6 @@ import UIKit
 
 class FactsTableViewCell: UITableViewCell {
 
-
-    
     let factsImageView : UIImageView = {
     let image = UIImage(named: "NoPicAvailable")
     let imgView = UIImageView(image: image!)
@@ -42,6 +40,9 @@ class FactsTableViewCell: UITableViewCell {
     }()
     
     
+        /**
+        Cell initializer
+     */
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -54,13 +55,13 @@ class FactsTableViewCell: UITableViewCell {
         addContraintsToElementFactDescriptionLabel()
     }
     
+    /**
+Constraints for Image View
+     */
     func addContraintsToElementFactImageView()
     {
        factsImageView.translatesAutoresizingMaskIntoConstraints = false
 
-
-        
-        
         let leadConstraints =  NSLayoutConstraint(item: factsImageView,
                     attribute: .leading,
                     relatedBy: .equal,
@@ -103,6 +104,9 @@ class FactsTableViewCell: UITableViewCell {
         
     }
     
+        /**
+    Constraints for Title Label
+         */
     func addContraintsToElementFactTitleLabel()
     {
         factTitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -147,6 +151,9 @@ class FactsTableViewCell: UITableViewCell {
 
     }
     
+        /**
+    Constraints for Description Label
+         */
     func addContraintsToElementFactDescriptionLabel()
     {
     
