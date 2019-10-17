@@ -38,18 +38,26 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
         callFactsService()
     }
 
+    /**
+    Call this function to call the Rest API.
+    */
     func callFactsService()
     {
         network.getFactsApiCall(urlString: FACTS_URL)
         startLoading()
     }
     
-    
+    /**
+      It handles refresher controls.
+       */
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
      callFactsService()
      refreshControl.endRefreshing()
     }
     
+    /**
+    Constrains set for table view
+     */
  func setupTableViewContraints()
  {
     aboutPlacesTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,19 +67,29 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
     aboutPlacesTableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
  }
     
+    /**
+    Activity indication will start loading
+     */
  func startLoading(){
      activityIndicator.center = self.view.center;
      activityIndicator.hidesWhenStopped = true;
      activityIndicator.style = UIActivityIndicatorView.Style.medium
      view.addSubview(activityIndicator);
-
      activityIndicator.startAnimating();
 
  }
 
+    /**
+       Activity indication will stop loading
+       */
  func stopLoading(){
      activityIndicator.stopAnimating();
  }
+    
+    
+    /**
+    Delegat method called from Network service upon successful Call
+    */
 func didCompleteRequest(result: AnyObject)
 {
         factsObject = result as? Facts
@@ -85,41 +103,50 @@ func didCompleteRequest(result: AnyObject)
     
 }
 
-extension AboutPlacesViewController:UITableViewDelegate,UITableViewDataSource
+/**
+Extensions for TableView Delegate
+ */
+extension AboutPlacesViewController:UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return factsObject?.rows?.count ?? 0
     }
  
+}
+  
+    /**
+    Extensions for TableView Datasource
+     */
+extension AboutPlacesViewController:UITableViewDataSource
+    {
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FACT_CELL_ID , for: indexPath) as! FactsTableViewCell
+         
+            if let title = factsObject?.rows![indexPath.row].title {
+                cell.factTitleLabel.text = title
+            }else {
+                cell.factTitleLabel.text = TITLE_NOT_AVAILABLE
 
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FACT_CELL_ID , for: indexPath) as! FactsTableViewCell
-     
-        if let title = factsObject?.rows![indexPath.row].title {
-            cell.factTitleLabel.text = title
-        }else {
-            cell.factTitleLabel.text = TITLE_NOT_AVAILABLE
+            }
+            
+            
+            if let description = factsObject?.rows![indexPath.row].description {
+                cell.factsDescriptionLabel.text = description
+            }else {
+                cell.factsDescriptionLabel.text = DESCRIPTION_NOT_AVAILABLE
 
+            }
+            
+            if let imageURLString = factsObject?.rows![indexPath.row].imageHref {
+                cell.factsImageView.sd_setImage(with: URL(string: imageURLString), placeholderImage: UIImage(named: "artificial-intelligence-1"))
+            }else {
+                cell.factsImageView.image = UIImage(named:"NoPicAvailable.png")
+            }
+
+            return cell
         }
-        
-        
-        if let description = factsObject?.rows![indexPath.row].description {
-            cell.factsDescriptionLabel.text = description
-        }else {
-            cell.factsDescriptionLabel.text = DESCRIPTION_NOT_AVAILABLE
-
-        }
-        
-        if let imageURLString = factsObject?.rows![indexPath.row].imageHref {
-            cell.factsImageView.sd_setImage(with: URL(string: imageURLString), placeholderImage: UIImage(named: "artificial-intelligence-1"))
-        }else {
-            cell.factsImageView.image = UIImage(named:"NoPicAvailable.png")
-        }
-
-        return cell
     }
     
+
     
-    
-}
+
