@@ -72,7 +72,7 @@ class FactsTableViewCell: UITableViewCell {
               toItem: nil,
               attribute: .height,
               multiplier: 1,
-              constant: 85)
+              constant: 120)
 
         let width =  NSLayoutConstraint(item: factsImageView,
                     attribute: .width,
@@ -80,7 +80,7 @@ class FactsTableViewCell: UITableViewCell {
                     toItem: nil,
                     attribute: .notAnAttribute,
                     multiplier: 1,
-                    constant: 85)
+                    constant: 120)
 
  
 
