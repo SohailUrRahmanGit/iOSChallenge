@@ -13,7 +13,7 @@ class FactsTableViewCell: UITableViewCell {
 
     
     let factsImageView : UIImageView = {
-    let image = UIImage(named: "artificial-intelligence-1")
+    let image = UIImage(named: "NoPicAvailable")
     let imgView = UIImageView(image: image!)
     imgView.contentMode = .scaleAspectFit
     imgView.clipsToBounds = true

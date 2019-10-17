@@ -76,7 +76,7 @@ extension AboutPlacesViewController:UITableViewDelegate,UITableViewDataSource
         if let imageURLString = factsObject?.rows![indexPath.row].imageHref {
             cell.factsImageView.sd_setImage(with: URL(string: imageURLString), placeholderImage: UIImage(named: "artificial-intelligence-1"))
         }else {
-            
+            cell.factsImageView.image = UIImage(named:"NoPicAvailable.png")
         }
 
         return cell
