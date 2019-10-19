@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NetworkServiceDelegate: class {
-    func didCompleteRequest(result: AnyObject)
+    func didCompleteRequest(result: Facts)
 }
 
 
@@ -49,7 +49,7 @@ class NetworkService: NSObject {
                 print(responseData as NSData)
                 let utf8Data = String(decoding: responseData, as: UTF8.self).data(using: .utf8)
                 let object = try decoder.decode(Facts.self, from: utf8Data!)
-                self.delegate?.didCompleteRequest(result: object as AnyObject)
+                self.delegate?.didCompleteRequest(result: object)
             }
             catch {
                 print(error)

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Codable class
 struct Facts : Codable {
     let title : String?
     let rows : [Rows]?
@@ -19,4 +20,3 @@ struct Rows : Codable {
     let imageHref : String?
 }
 
-//let Facts = try? newJSONDecoder().decode(Facts.self, from: jsonData)

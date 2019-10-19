@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -116,8 +116,8 @@
 				C54E41F52356FCD80033148B /* AppDelegate.swift */,
 				C54E41F72356FCD80033148B /* SceneDelegate.swift */,
 				C54E41FE2356FCDB0033148B /* Assets.xcassets */,
-				C54E42002356FCDB0033148B /* LaunchScreen.storyboard */,
 				C54E42032356FCDB0033148B /* Info.plist */,
+				C54E42002356FCDB0033148B /* LaunchScreen.storyboard */,
 				C5D3F9C323582497004E6C47 /* Utils */,
 			);
 			path = AboutPlaces;
