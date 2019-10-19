@@ -46,7 +46,6 @@ class NetworkService: NSObject {
             let decoder = JSONDecoder()
             do {
                 // Decode data to object
-                print(responseData as NSData)
                 let utf8Data = String(decoding: responseData, as: UTF8.self).data(using: .utf8)
                 let object = try decoder.decode(Facts.self, from: utf8Data!)
                 self.delegate?.didCompleteRequest(result: object)

@@ -21,7 +21,6 @@ class FactsTableViewCell: UITableViewCell {
     let factTitleLabel : UILabel = {
     let lbl = UILabel()
     lbl.textColor = .black
-    lbl.text = "Space Program is good"
     lbl.font = UIFont.boldSystemFont(ofSize: 20)
     lbl.textAlignment = .left
     return lbl
@@ -31,8 +30,6 @@ class FactsTableViewCell: UITableViewCell {
     let factsDescriptionLabel : UILabel = {
     let lbl = UILabel()
     lbl.textColor = .black
-        lbl.text = "Space Program is good"
-
     lbl.font = UIFont.systemFont(ofSize: 16)
     lbl.textAlignment = .left
     lbl.numberOfLines = 0

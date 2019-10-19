@@ -12,7 +12,6 @@ import SDWebImage
 class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
 
     
-    
     let aboutPlacesTableView = UITableView()
     let network = NetworkService()
     var factsObject : Facts?
