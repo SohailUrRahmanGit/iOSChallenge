@@ -9,6 +9,8 @@ target 'AboutPlaces' do
   # Pods for AboutPlaces
 
     pod 'SDWebImage'
+    pod 'ReachabilitySwift'
+
 
 
 

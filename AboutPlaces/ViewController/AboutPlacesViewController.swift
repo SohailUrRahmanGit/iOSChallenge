@@ -8,7 +8,7 @@
 
 import UIKit
 import SDWebImage
-
+import Reachability
 class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
 
     
@@ -45,26 +45,49 @@ class AboutPlacesViewController: UIViewController,NetworkServiceDelegate {
         network.delegate = self
         
         DispatchQueue.main.async {
-            self.callFactsService()
-            
+            self.callFactsServiceReachablity()
+            self.startLoading()
+
         }
+    }
+    
+    
+    /**
+     Call this function to call the Network Reachablity.
+     */
+    func callFactsServiceReachablity()
+    {
+
+        let reachability = Reachability()!
+         switch reachability.connection {
+         case .wifi:
+            // print("Reachable via WiFi")
+             callFactAPI()
+         case .cellular:
+            // print("Reachable via Cellular")
+             callFactAPI()
+         case .none:
+           print("Network not reachable")
+           alert(message: "Unable to Reach Desired network", title: "No Network")
+           stopLoading()
+         }
+
     }
     
     
     /**
      Call this function to call the Rest API.
      */
-    func callFactsService()
+    func callFactAPI()
     {
         network.getFactsApiCall(urlString: FACTS_URL)
-        startLoading()
     }
     
     /**
      It handles refresher controls.
      */
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        callFactsService()
+        callFactsServiceReachablity()
         refreshControl.endRefreshing()
     }
     
@@ -160,6 +183,15 @@ extension AboutPlacesViewController:UITableViewDataSource
     }
 }
 
+//For alert view
+extension UIViewController {
+  func alert(message: String, title: String = "") {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    alertController.addAction(OKAction)
+    self.present(alertController, animated: true, completion: nil)
+  }
+}
 
 
 

@@ -11,6 +11,7 @@ import XCTest
 
 class AboutPlacesTests: XCTestCase {
  
+    var object : Facts?
     //URL String Test
  func testValidURLString() {
    XCTAssertEqual(FACTS_URL, "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")
@@ -24,7 +25,7 @@ class AboutPlacesTests: XCTestCase {
 //Testing Json Response. It is totally network dependent. we can use Libraries such as Mockingay,Hippolyte, OHHTTPStubs stubbing libraries to stub the request and response
 func testTitleString() {
     guard let gitUrl = URL(string:FACTS_URL) else { return }
-    let promise = expectation(description: "Simple Request")
+    let promise = expectation(description: "Request")
     URLSession.shared.dataTask(with: gitUrl) { (data, response
         , error) in
         guard let data = data else { return }
@@ -32,8 +33,9 @@ func testTitleString() {
         do {
             // Decode data to object
             let utf8Data = String(decoding: data, as: UTF8.self).data(using: .utf8)
-            let object = try decoder.decode(Facts.self, from: utf8Data!)
-            XCTAssertTrue(object.title! == "About Canada")
+            self.object = try decoder.decode(Facts.self, from: utf8Data!)
+            XCTAssert(self.object != nil)
+            XCTAssertTrue(self.object?.title! == "About Canada")
             promise.fulfill()
 
         } catch let err {
@@ -42,4 +44,8 @@ func testTitleString() {
         }.resume()
     waitForExpectations(timeout: 5, handler: nil)
 }
+
+
+    
+    
 }
